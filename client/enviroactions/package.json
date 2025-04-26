@@ -13,11 +13,7 @@
     "@auth0/auth0-react": "^2.3.0",
     "bootstrap": "^5.3.5",
     "react": "^19.0.0",
-<<<<<<< HEAD
-    "react-dom": "^19.0.0",
-=======
     "react-dom": "^19.1.0",
->>>>>>> f9536026e9f8a8ebfc6b29342d03ad762aeaa440
     "react-router-dom": "^7.5.2"
   },
   "devDependencies": {

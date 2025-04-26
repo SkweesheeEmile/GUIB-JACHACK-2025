@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+import React from "react";
 export function AccountInfo() {
     return (
         <div>
@@ -7,8 +7,6 @@ export function AccountInfo() {
         </div>
     );
 }
-=======
-import React from "react";
 
 export default function GetInfo() {
   return (
@@ -22,4 +20,3 @@ export default function GetInfo() {
     </div>
   );
 }
->>>>>>> f9536026e9f8a8ebfc6b29342d03ad762aeaa440
