@@ -3,6 +3,8 @@ import React, { useState } from "react";
 
 function forms(){
 
+    const [selectedOption, setSelectedOption] = useState('');
+
     const [radio, setradio] = useState({
         vehicule: "",
         ShoppingStyle: "",
@@ -215,6 +217,23 @@ function forms(){
 
             <br />
 
+            {radio.Otherenergy === 'yes' && (
+            <div>
+                <p>What is this other type of energy?</p>
+                <select onChange={handleChange} value={selectedOption}>
+                    <option value="">-- Choisir une option --</option>
+                    <option value="Caol">Coal</option>
+                    <option value="solar">Solar</option>
+                    <option value="fuel">Fuel</option>
+                    <option value="Gaz">Gaz</option>
+                    <option value="Thermal">Thermal</option>
+                    <option value="Hydroelectricity">Hydroelectricity</option>
+                    <option value="Wind">WindPower</option>
+
+                </select>
+            </div>
+            )}
+
 
             <h3>Finance</h3>
             <p>What is your income per year?</p>
@@ -288,7 +307,7 @@ function forms(){
                 />
                 No
             </label>
-
+g
             <br />
 
 

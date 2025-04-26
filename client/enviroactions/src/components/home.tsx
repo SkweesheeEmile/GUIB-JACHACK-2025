@@ -20,10 +20,10 @@ function Home () {
         setSelectedOption(value);
 
         if ( value == 'nomC' ){
-            openchangeN
+            openchangeN()
         }
         if ( value == 'passwordC' ){
-            openchangeP
+            openchangeP()
         }
         if ( value == 'logout' ){
 
