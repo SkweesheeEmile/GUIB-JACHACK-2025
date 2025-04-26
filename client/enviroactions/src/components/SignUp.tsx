@@ -6,21 +6,18 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const SignUp: React.FC = () => {
   const { loginWithRedirect } = useAuth0();
 
-  const handleSignUp = async () => {
+  const handleSignUp = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
     await loginWithRedirect({
       appState: {
-        returnTo: "/report",
+        returnTo: `${window.location.origin}`,
       },
       authorizationParams: {
-        screen_hint: "signup",
+        redirect_uri: `${window.location.origin}/infoForm`,
       },
     });
   };
 
-  return (
-    <div>
-      <h2>Sign Up</h2>
-      <button onClick={handleSignUp}>Sign Up</button>
-    </div>
-  );
+  return <button onClick={handleSignUp}>Sign Up</button>;
 };

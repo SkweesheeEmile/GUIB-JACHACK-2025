@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Select from "react-select";
+import { LogOut } from "./LogOut.tsx";
 
 import { useNavigate } from "react-router-dom";
 
@@ -70,10 +71,7 @@ function Home () {
                 </div>
 
             )}
+        <LogOut />
         </div>
     );
-
-
-
-}
 export default Home
