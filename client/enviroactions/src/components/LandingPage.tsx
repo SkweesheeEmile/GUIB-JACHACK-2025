@@ -1,4 +1,5 @@
 import { useNavigate } from 'react-router-dom';
+import Footer from './footer';
 
 function LandingPage() {
     const navigate = useNavigate()
@@ -23,8 +24,10 @@ function LandingPage() {
                 We show you the best places to buy things like trees or solar panels, and we help you build a financial plan to reach your goals.  </h3>
             <button onClick={ClickSignUp}> Sign Up</button>
             <button onClick={ClickSignIn}> Sign In</button>
-        </div>
 
+            <Footer/>
+
+        </div>
 
     );
 }

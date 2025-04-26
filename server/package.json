@@ -1,0 +1,35 @@
+{
+  "dependencies": {
+    "@google-ai/generativelanguage": "^3.1.0",
+    "@google/genai": "^0.10.0",
+    "@google/generative-ai": "^0.24.0",
+    "@types/express": "^5.0.0",
+    "@types/express-list-endpoints": "^6.0.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "express-list-endpoints": "^7.1.1",
+    "express-list-routes": "^1.2.4",
+    "mongodb": "^6.13.1",
+    "mongodb-memory-server": "^10.1.4",
+    "pino-http": "^10.4.0",
+    "supertest": "^7.1.0",
+    "vitest": "^3.0.9"
+  },
+  "name": "assignment1webii",
+  "version": "1.0.0",
+  "main": "server.ts",
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/node": "^22.13.5",
+    "@types/supertest": "^6.0.2",
+    "ts-jest": "^29.2.6"
+  },
+  "scripts": {
+    "test": "vitest"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "type": "module"
+}

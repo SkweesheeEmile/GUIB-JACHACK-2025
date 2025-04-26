@@ -1,14 +1,5 @@
-<<<<<<< HEAD
-export function SignIn() {
-    return (
-        <div>
-            <h1>Sign In</h1>
-        </div>
-    );
-}
-=======
 import React from "react";
-import Home from "./Home";
+import {Home} from "./Home";
 import { useState } from "react";
 import GetInfo from "./AccountInfo";
 
@@ -31,4 +22,3 @@ export function Account(Request: string) {
     </div>
   );
 }
->>>>>>> f9536026e9f8a8ebfc6b29342d03ad762aeaa440
