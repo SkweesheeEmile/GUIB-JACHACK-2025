@@ -5,10 +5,15 @@ import { useAuth0 } from "@auth0/auth0-react";
 export const SignIn: React.FC = () => {
   const { loginWithRedirect } = useAuth0();
 
-  const handleLogin = async () => {
+  const handleLogin = async (e: React.MouseEvent) => {
+    e.preventDefault();
+
     await loginWithRedirect({
       appState: {
-        returnTo: "/home",
+        returnTo: `${window.location.origin}`,
+      },
+      authorizationParams: {
+        redirect_uri: `${window.location.origin}/home`,
       },
     });
   };

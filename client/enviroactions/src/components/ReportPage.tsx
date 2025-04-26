@@ -1,16 +1,12 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-
 function ReportPage() {
+
     const navigate = useNavigate();
     const returnhome = () => {
         navigate("/")
     };
-
-
-
 
     return (
 
@@ -26,13 +22,5 @@ function ReportPage() {
 
     );
 
-
-
-
-
-
-
-
-
 }
-export default ReportPage
+export default ReportPage;
