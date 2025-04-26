@@ -1,6 +1,7 @@
 // import { useNavigate } from 'react-router-dom';
 import AuthButtons from "./AuthButtons";
 
+
 function LandingPage() {
   // const navigate = useNavigate()
 
