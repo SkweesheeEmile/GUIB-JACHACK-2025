@@ -1,29 +1,29 @@
-import React, { useState } from "react";
-
+import { useNavigate } from 'react-router-dom';
 
 
 function LandingPage() {
+    const navigate = useNavigate()
+
     
-    const ClickSignIn = async () =>{
+    const ClickSignUp = () =>{
         
-        window.location.href = '/signin';
+        navigate("/signUp");
+
 
     };
-    const ClickLogIn = async () =>{
-        
-        window.location.href = '/login';
-
+    const ClickSignIn = () =>{
+        navigate("/signIn");
     };
 
 
     return (
         <div>
-            <image></image>
+            <img></img>
             <h1>Welcome to EnviroAction! Report green!</h1>
             <h3>We help you create a personalized plan to support the environment in your own way.
                 We show you the best places to buy things like trees or solar panels, and we help you build a financial plan to reach your goals.  </h3>
+            <button onClick={ClickSignUp}> Sign Up</button>
             <button onClick={ClickSignIn}> Sign In</button>
-            <button onClick={ClickLogIn}> Log In</button>
         </div>
 
 
