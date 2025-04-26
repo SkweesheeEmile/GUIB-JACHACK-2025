@@ -19,8 +19,10 @@ function Home() {
     const value = e.target.value;
     setSelectedOption(value);
 
+
     if (value == "nomC") {
       openchangeN();
+
     }
     if (value == "passwordC") {
       openchangeP();
