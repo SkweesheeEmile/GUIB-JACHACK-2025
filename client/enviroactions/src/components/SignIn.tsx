@@ -1,5 +1,8 @@
 // src/components/SignIn.tsx
 import React from "react";
+import {Home} from "./Home";
+import { useState } from "react";
+import GetInfo from "./AccountInfo";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const SignIn: React.FC = () => {
