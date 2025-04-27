@@ -6,7 +6,6 @@ import "../styles/form.css"; // Adjust the path as necessary
 function Forms(props: any) {
     const navigate = useNavigate();
     const [address, setAddress] = useState('');
-    const [userData, setUserData] = useState('');
 
     const [radio, setradio] = useState({
         selectedOption: "",
@@ -77,7 +76,7 @@ function Forms(props: any) {
         const response = await fetch("http://localhost:1339/report", requestBody);
 
         const data = await response.json();
-        setUserData(data);
+        props.setUserData(data);
         navigate("/report", { state: { userData: data } });
     };
 
