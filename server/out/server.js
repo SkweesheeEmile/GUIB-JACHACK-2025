@@ -1,5 +1,4 @@
 //A decent part of this code is repurposed from the previous RestAPI lab.
-import * as model from "./models/carModel.js";
 import app from './app.js';
 import { GoogleGenAI } from "@google/genai";
 //this initiates the env variables
@@ -8,7 +7,6 @@ dotenv.config();
 const port = 1339;
 const url = `${process.env.URL_PRE}${process.env.MONGODB_PWD}${process.env.URL_POST}`;
 try {
-    model.initialize('car_db', false, url);
     await app.listen(port, async () => {
         console.log(`Server running at http://localhost:${port}/`);
         const ai = new GoogleGenAI({ apiKey: "AIzaSyChjODftywEX8bMWLCcoxmelouLHd2AcrY" });
@@ -95,18 +93,9 @@ try {
         •	Expense month: 1000 CAD
         `
         });
-        console.log(JSON.parse(removeCodeBlockMarkdown(response.text)));
     });
 }
 catch (error) {
     console.error(error);
-}
-function removeCodeBlockMarkdown(text) {
-    text.split('\n').forEach((line) => {
-        if (line.startsWith('```')) {
-            text = text.replace(line, '');
-        }
-    });
-    return text;
 }
 //# sourceMappingURL=server.js.map

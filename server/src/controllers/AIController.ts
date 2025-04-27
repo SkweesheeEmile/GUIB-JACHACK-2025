@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import { GoogleGenAI } from "@google/genai";
 
-const ai = new GoogleGenAI({ apiKey: "YOUR_API_KEY" });
+const ai = new GoogleGenAI({ apiKey: "AIzaSyChjODftywEX8bMWLCcoxmelouLHd2AcrY" });
 const router = express.Router();
 const routeRoot = "/report";
 
@@ -62,7 +62,15 @@ async function getReportHandler(req: Request, res: Response) {
             }
             ] //list of objects
             }
-        
+
+            Conditions:
+            PROVIDE THE JSON FORMAT ONLY, DO NOT PROVIDE ANY OTHER TEXT OR EXPLANATION
+            •	In your response only include the JSON files
+            •	Must include all section( advice, locations and investment)
+            •	a google map with service around the user mentioned location that work
+            •	please Verify that all link works
+            •	respect every detail of this prompt
+
 
         Info About the user:
         •	Commute time: ${commuteTime} minutes
