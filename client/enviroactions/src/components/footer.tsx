@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "../styles/footer.css"
 
 function Footer() {
   const adresse = "guibnation999@enviroaction.qc.ca";
@@ -11,8 +12,8 @@ function Footer() {
 
   return (
     <div id="footer">
-      <p onClick={copyAdresse}> Contact Us: @guibnation999</p>
-      <p>COPYRIGHT Guib Inc © 2025</p>
+      <p id="footerleft" onClick={copyAdresse}> Contact Us: @guibnation999</p>
+      <p id="footerright" >COPYRIGHT Guib Inc © 2025</p>
     </div>
   );
 }

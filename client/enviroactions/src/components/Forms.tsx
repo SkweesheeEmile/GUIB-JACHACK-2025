@@ -48,10 +48,10 @@ function Forms(props: any) {
 
   const inputsHandler = (event: {
     preventDefault: () => void;
-    target: { name: any; value: any };
+    target: { name: any; value: any; type: string };
   }) => {
-    event.preventDefault();
 
+    event.preventDefault();
     const { name, value } = event.target;
 
     setInputField((prevState) => ({
@@ -111,6 +111,7 @@ function Forms(props: any) {
             type="number"
             name="time"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <p>What distance do you usually travel everyday? (in KM)</p>
           <input
@@ -118,6 +119,7 @@ function Forms(props: any) {
             type="number"
             name="distance"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <p>With which vehicule do you usually travel?</p>
           <label>
@@ -205,6 +207,7 @@ function Forms(props: any) {
             type="number"
             name="energyConsomption"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <p>How big is your house? (In square feet)</p>
           <input
@@ -212,6 +215,7 @@ function Forms(props: any) {
             type="number"
             name="Housesize"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <p>What is your address?</p>
           <AddressAutocomplete setAddress={setAddress} address={address} />
@@ -252,7 +256,7 @@ function Forms(props: any) {
                 <option value="">Choose an Option</option>
                 <option value="Coal">Coal</option>
                 <option value="Solar">Solar</option>
-                <option value="Fuel">Fuel</option>
+                <option value="Fuel">Gasoline</option>
                 <option value="Gaz">Gaz</option>
                 <option value="Thermal">Thermal</option>
                 <option value="Hydroelectricity">Hydroelectricity</option>
@@ -267,6 +271,7 @@ function Forms(props: any) {
             type="number"
             name="Income"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <p>Approximatly, what are your monthly expenses?</p>
           <input
@@ -274,6 +279,7 @@ function Forms(props: any) {
             type="number"
             name="Expense"
             onChange={inputsHandler}
+            min={0}
           ></input>
           <h3>Awareness</h3>
           <p>Do you make sure all unused lights are close in your house ?</p>
