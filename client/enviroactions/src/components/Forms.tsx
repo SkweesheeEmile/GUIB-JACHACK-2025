@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 
 function Forms(){
-
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('');
 
     const [radio, setradio] = useState({
@@ -45,7 +45,7 @@ function Forms(){
 	};
 
     const Checkfinish = () => {
-
+        navigate("/report");
     };
 
     return (
