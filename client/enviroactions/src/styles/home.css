@@ -1,0 +1,14 @@
+#homeBar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em;
+  width: 100vw;
+  align-items: center;
+}
+
+#dropDownMenu {
+  height: 4em;
+  max-height: 100px;
+  align-self: center;
+  margin-right: 1em;
+}

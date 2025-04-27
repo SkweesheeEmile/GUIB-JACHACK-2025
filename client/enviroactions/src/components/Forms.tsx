@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AddressAutocomplete from "./AddressSelect";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/form.css"; // Adjust the path as necessary
 
 function Forms(props: any) {
     const navigate = useNavigate();
@@ -89,287 +89,235 @@ function Forms(props: any) {
 
             <p>How long do you commute everyday? (in minutes)</p>
             <input
-                placeholder="Time"
-				type="number"
-				name="time"
-			    onChange={inputsHandler}
-            ></input>
-
-
-            <p>What distance do you usually travel everyday? (in KM)</p>
+              type="radio"
+              value="Car"
+              name="vehicule"
+              checked={radio.vehicule === "Car"}
+              onChange={handleChange}
+            />
+            Car
+          </label>
+          <br />
+          <label>
             <input
-                placeholder="Distance"
-				type="number"
-				name="distance"
-			    onChange={inputsHandler}
-            ></input>
-
-
-            <p>With which vehicule do you usually travel?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="Car"
-                    name="vehicule"
-                    checked={radio.vehicule === 'Car'}
-                    onChange={handleChange}
-                />
-                Car
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="Bicycle"
-                    name="vehicule"
-                    checked={radio.vehicule === 'Bicycle'}
-                    onChange={handleChange}
-                />
-                Bicycle
-            </label>
-
-            <br />
-            <label>
-                <input
-                    type="radio"
-                    value="Marche"
-                    name="vehicule"
-                    checked={radio.vehicule === 'Marche'}
-                    onChange={handleChange}
-                />
-                Walking
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="Transport en commun"
-                    name="vehicule"
-                    checked={radio.vehicule === 'Transport en commun'}
-                    onChange={handleChange}
-                />
-                Public Transport
-            </label>
-            <br />
-
-
-            <p>What would you consider your shopping style?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="impulse"
-                    name="ShoppingStyle"
-                    checked={radio.ShoppingStyle === 'impulse'}
-                    onChange={handleChange}
-                />
-                Impulsive
-            </label>
-
-            <br />
-            <label>
-                <input
-                    type="radio"
-                    value="Moderate"
-                    name="ShoppingStyle"
-                    checked={radio.ShoppingStyle === 'Moderate'}
-                    onChange={handleChange}
-                />
-                Moderate
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="Minimal"
-                    name="ShoppingStyle"
-                    checked={radio.ShoppingStyle === 'Minimal'}
-                    onChange={handleChange}
-                />
-                Minimal
-            </label>
-            <br/>
-
-
-            <h3>Energy</h3>
-            <p>On average, how much energy does your house use? (in KW/h)</p>
+              type="radio"
+              value="Bicycle"
+              name="vehicule"
+              checked={radio.vehicule === "Bicycle"}
+              onChange={handleChange}
+            />
+            Bicycle
+          </label>
+          <br />
+          <label>
             <input
-                placeholder="KW/h"
-				type="number"
-				name="energyConsomption"
-			    onChange={inputsHandler}
-            ></input>
-
-
-            <p>How big is your house? (In square feet)</p>
+              type="radio"
+              value="Marche"
+              name="vehicule"
+              checked={radio.vehicule === "Marche"}
+              onChange={handleChange}
+            />
+            Walking
+          </label>
+          <br />
+          <label>
             <input
-                placeholder="sqr/f"
-				type="number"
-				name="Housesize"
-			    onChange={inputsHandler}
-            ></input>
-
-
-            <p>What is your address?</p>
-
-            <AddressAutocomplete setAddress={setAddress} address={address}/>
-
-
-            <p>Do you use other energy source other than the one provided by the city?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="yes"
-                    name="Otherenergy"
-                    checked={radio.Otherenergy === 'yes'}
-                    onChange={handleChange}
-                />
-                Yes
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="no"
-                    name="Otherenergy"
-                    checked={radio.Otherenergy === 'no'}
-                    onChange={handleChange}
-                />
-                No
-            </label>
-
-            <br />
-
-            {radio.Otherenergy === 'yes' && (
+              type="radio"
+              value="Transport en commun"
+              name="vehicule"
+              checked={radio.vehicule === "Transport en commun"}
+              onChange={handleChange}
+            />
+            Public Transport
+          </label>
+          <br />
+          <p>What would you consider your shopping style?</p>
+          <label>
+            <input
+              type="radio"
+              value="impulse"
+              name="ShoppingStyle"
+              checked={radio.ShoppingStyle === "impulse"}
+              onChange={handleChange}
+            />
+            Impulsive
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="Moderate"
+              name="ShoppingStyle"
+              checked={radio.ShoppingStyle === "Moderate"}
+              onChange={handleChange}
+            />
+            Moderate
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="Minimal"
+              name="ShoppingStyle"
+              checked={radio.ShoppingStyle === "Minimal"}
+              onChange={handleChange}
+            />
+            Minimal
+          </label>
+          <br />
+          <h3>Energy</h3>
+          <p>On average, how much energy does your house use? (in KW/h)</p>
+          <input
+            placeholder="KW/h"
+            type="number"
+            name="energyConsomption"
+            onChange={inputsHandler}
+          ></input>
+          <p>How big is your house? (In square feet)</p>
+          <input
+            placeholder="sqr/f"
+            type="number"
+            name="Housesize"
+            onChange={inputsHandler}
+          ></input>
+          <p>What is your address?</p>
+          <AddressAutocomplete setAddress={setAddress} address={address} />
+          <p>
+            Do you use other energy source other than the one provided by the
+            city?
+          </p>
+          <label>
+            <input
+              type="radio"
+              value="yes"
+              name="Otherenergy"
+              checked={radio.Otherenergy === "yes"}
+              onChange={handleChange}
+            />
+            Yes
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="no"
+              name="Otherenergy"
+              checked={radio.Otherenergy === "no"}
+              onChange={handleChange}
+            />
+            No
+          </label>
+          <br />
+          {radio.Otherenergy === "yes" && (
             <div>
-                <p>What is this other type of energy?</p>
-                <select name="selectedOption" onChange={handleChange} value={radio.selectedOption || ''}>
-                    <option value="">Choose an Option</option>
-                    <option value="Coal">Coal</option>
-                    <option value="Solar">Solar</option>
-                    <option value="Fuel">Fuel</option>
-                    <option value="Gaz">Gaz</option>
-                    <option value="Thermal">Thermal</option>
-                    <option value="Hydroelectricity">Hydroelectricity</option>
-                    <option value="Wind">WindPower</option>
-                </select>
+              <p>What is this other type of energy?</p>
+              <select
+                name="selectedOption"
+                onChange={handleChange}
+                value={radio.selectedOption || ""}
+              >
+                <option value="">Choose an Option</option>
+                <option value="Coal">Coal</option>
+                <option value="Solar">Solar</option>
+                <option value="Fuel">Fuel</option>
+                <option value="Gaz">Gaz</option>
+                <option value="Thermal">Thermal</option>
+                <option value="Hydroelectricity">Hydroelectricity</option>
+                <option value="Wind">WindPower</option>
+              </select>
             </div>
-            )}
-
-
-            <h3>Finance</h3>
-            <p>What is your yearly income?</p>
+          )}
+          <h3>Finance</h3>
+          <p>What is your yearly income?</p>
+          <input
+            placeholder="$"
+            type="number"
+            name="Income"
+            onChange={inputsHandler}
+          ></input>
+          <p>Approximatly, what are your monthly expenses?</p>
+          <input
+            placeholder="$"
+            type="number"
+            name="Expense"
+            onChange={inputsHandler}
+          ></input>
+          <h3>Awareness</h3>
+          <p>Do you make sure all unused lights are close in your house ?</p>
+          <label>
             <input
-                placeholder="$"
-				type="number"
-				name="Income"
-			    onChange={inputsHandler}
-            ></input>
-            
-
-            <p>Approximatly, what are your monthly expenses?</p>
+              type="radio"
+              value="yes"
+              name="lightonoff"
+              checked={radio.lightonoff === "yes"}
+              onChange={handleChange}
+            />
+            Yes
+          </label>
+          <br />
+          <label>
             <input
-                placeholder="$"
-				type="number"
-				name="Expense"
-			    onChange={inputsHandler}
-            ></input>
-
-
-            <h3>Awareness</h3>
-            <p>Do you make sure all unused lights are close in your house ?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="yes"
-                    name="lightonoff"
-                    checked={radio.lightonoff === 'yes'}
-                    onChange={handleChange}
-                />
-                Yes
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="no"
-                    name="lightonoff"
-                    checked={radio.lightonoff === 'no'}
-                    onChange={handleChange}
-                />
-                No
-            </label>
-
-            <br />
-
-
-            <p>Do you overuse heating and AC?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="yes"
-                    name="AC_Heat"
-                    checked={radio.AC_Heat === 'yes'}
-                    onChange={handleChange}
-                />
-                Yes
-            </label>
-
-            <br />
-
-            <label>
-                <input
-                    type="radio"
-                    value="no"
-                    name="AC_Heat"
-                    checked={radio.AC_Heat === 'no'}
-                    onChange={handleChange}
-                />
-                No
-            </label>
-g
-            <br />
-
-
-            <p>Do you leave your electronics always plugged in?</p>
-            <label>
-                <input
-                    type="radio"
-                    value="yes"
-                    name="plugin"
-                    checked={radio.plugin === 'yes'}
-                    onChange={handleChange}
-                />
-                Yes
-            </label>
-
-            <br/>
-
-            <label>
-                <input
-                    type="radio"
-                    value="no"
-                    name="plugin"
-                    checked={radio.plugin === 'no'}
-                    onChange={handleChange}
-                />
-                No
-            </label>
-
-            <br/>
-
-            <button onClick={Checkfinish}>Done</button>
+              type="radio"
+              value="no"
+              name="lightonoff"
+              checked={radio.lightonoff === "no"}
+              onChange={handleChange}
+            />
+            No
+          </label>
+          <br />
+          <p>Do you overuse heating and AC?</p>
+          <label>
+            <input
+              type="radio"
+              value="yes"
+              name="AC_Heat"
+              checked={radio.AC_Heat === "yes"}
+              onChange={handleChange}
+            />
+            Yes
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="no"
+              name="AC_Heat"
+              checked={radio.AC_Heat === "no"}
+              onChange={handleChange}
+            />
+            No
+          </label>
+          g
+          <br />
+          <p>Do you leave your electronics always plugged in?</p>
+          <label>
+            <input
+              type="radio"
+              value="yes"
+              name="plugin"
+              checked={radio.plugin === "yes"}
+              onChange={handleChange}
+            />
+            Yes
+          </label>
+          <br />
+          <label>
+            <input
+              type="radio"
+              value="no"
+              name="plugin"
+              checked={radio.plugin === "no"}
+              onChange={handleChange}
+            />
+            No
+          </label>
+          <br />
+          <button onClick={Checkfinish}>Done</button>
         </div>
-    );
+      </div>
+    </>
+  );
 }
 
-export default Forms
+export default Forms;
