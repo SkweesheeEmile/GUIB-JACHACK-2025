@@ -1,12 +1,11 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from "react";
+//hi
 
 declare global {
-    interface Window {
-        initMap: () => void;
-    }
+  interface Window {
+    initMap: () => void;
   }
-
-
+}
 
 interface GoogleMapProps {
   center: { lat: number; lng: number };
@@ -15,7 +14,12 @@ interface GoogleMapProps {
   markers?: { position: { lat: number; lng: number }; title?: string }[];
 }
 
-const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, mapTypeId = 'roadmap', markers }) => {
+const GoogleMap: React.FC<GoogleMapProps> = ({
+  center,
+  zoom,
+  mapTypeId = "roadmap",
+  markers,
+}) => {
   const mapRef = useRef<HTMLDivElement | null>(null);
   const mapInstance = useRef<google.maps.Map | null>(null);
 
@@ -29,7 +33,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, mapTypeId = 'roadma
         });
 
         if (markers) {
-          markers.forEach(marker => {
+          markers.forEach((marker) => {
             new window.google.maps.Marker({
               position: marker.position,
               map: mapInstance.current,
@@ -43,7 +47,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, mapTypeId = 'roadma
     // Check if the Google Maps API is already loaded
     if (!window.google || !window.google.maps) {
       // Create a script tag to load the API
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyChjODftywEX8bMWLCcoxmelouLHd2AcrY&callback=initMap`;
       script.async = true;
       script.defer = true;
@@ -51,7 +55,7 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, mapTypeId = 'roadma
       document.head.appendChild(script);
 
       script.onerror = () => {
-        console.error('Failed to load Google Maps API.');
+        console.error("Failed to load Google Maps API.");
       };
     } else {
       loadMap(); // API already loaded
@@ -64,7 +68,11 @@ const GoogleMap: React.FC<GoogleMapProps> = ({ center, zoom, mapTypeId = 'roadma
   }, [center, zoom, mapTypeId, markers]);
 
   return (
-    <div ref={mapRef} style={{ height: '400px', width: '100%' }} id="google-map-container" />
+    <div
+      ref={mapRef}
+      style={{ height: "400px", width: "100%" }}
+      id="google-map-container"
+    />
   );
 };
 
