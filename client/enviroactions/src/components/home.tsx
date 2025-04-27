@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Select from "react-select";
 import { LogOut } from "./LogOut.tsx";
 import { useAuth0 } from "@auth0/auth0-react";
 
@@ -20,8 +21,10 @@ function Home() {
     const value = e.target.value;
     setSelectedOption(value);
 
+
     if (value == "nomC") {
       openchangeN();
+
     }
     if (value == "passwordC") {
       openchangeP();
