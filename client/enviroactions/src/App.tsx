@@ -3,6 +3,8 @@ import LandingPage from "./components/LandingPage.tsx";
 import { Route, Routes } from "react-router-dom";
 import Home from "./components/home.tsx";
 import ReportPage from "./components/ReportPage.tsx";
+import Home from "./components/home.tsx";
+import ReportPage from "./components/ReportPage.tsx";
 import Forms from "./components/Forms.tsx";
 import Footer from "./components/footer.tsx";
 
