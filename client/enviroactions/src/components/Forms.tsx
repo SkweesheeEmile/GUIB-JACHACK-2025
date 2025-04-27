@@ -4,122 +4,90 @@ import { useNavigate } from "react-router-dom";
 import "../styles/form.css"; // Adjust the path as necessary
 
 function Forms(props: any) {
-  const navigate = useNavigate();
-  const [address, setAddress] = useState("");
+    const navigate = useNavigate();
+    const [address, setAddress] = useState('');
+    const [userData, setUserData] = useState('');
 
-  const [radio, setradio] = useState({
-    selectedOption: "",
-    vehicule: "",
-    ShoppingStyle: "",
-    Otherenergy: "",
-    lightonoff: "",
-    AC_Heat: "",
-    plugin: "",
-  });
+    const [radio, setradio] = useState({
+        selectedOption: "",
+        vehicule: "",
+        ShoppingStyle: "",
+        Otherenergy: "",
+        lightonoff: "",
+        AC_Heat: "", 
+        plugin: ""
+    });
 
-  const [inputField, setInputField] = useState({
-    time: 0,
-    distance: 0,
-    energyConsomption: 0,
-    Housesize: 0,
-    Income: 0,
-    Expense: 0,
-    Address: "",
-  });
+    const [inputField, setInputField] = useState({
+		time: 0,
+		distance: 0,
+        energyConsomption: 0,
+        Housesize: 0,
+        Income: 0,
+        Expense: 0,
+        Address: ""
+	});
 
-  const returnToLandingPage = () => {
-    navigate("/");
-  };
+    const handleChange = (e: { target: { name: any; value: any; }; }) => {
+        
+        const { name, value } = e.target;
 
-  const returnhome = () => {
-    navigate("/home");
-  };
-  const handleChange = (e: { target: { name: any; value: any } }) => {
-    const { name, value } = e.target;
+        setradio((prevState) => ({
+			...prevState, 
+			[name]: value, 
+		}));
 
-    setradio((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-
-    console.log(`${name}: ${value}`);
-  };
-
-  const inputsHandler = (event: {
-    preventDefault: () => void;
-    target: { name: any; value: any };
-  }) => {
-    event.preventDefault();
-
-    const { name, value } = event.target;
-
-    setInputField((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  };
-
-  const Checkfinish = async () => {
-    const requestBody = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        commuteTime: inputField.time,
-        commuteDistance: inputField.distance,
-        commuteMethod: radio.vehicule,
-        shoppingStyle: radio.ShoppingStyle,
-        energyConsumption: inputField.energyConsomption,
-        houseSize: inputField.Housesize,
-        userLocation: radio.selectedOption,
-        Income: inputField.Income,
-        Expense: inputField.Expense,
-        Otherenergy: radio.Otherenergy,
-        lightonoff: radio.lightonoff,
-        AC_Heat: radio.AC_Heat,
-        plugin: radio.plugin,
-      }),
+        console.log(`${name}: ${value}`);
     };
-    const response = await fetch("http://localhost:1339/report", requestBody);
 
-    const data = await response.json();
-    props.setUserData(data);
-    navigate("/report", { state: { userData: data } });
-  };
+    const inputsHandler = (event: { preventDefault: () => void; target: { name: any; value: any; }; }) => {
+		event.preventDefault();
 
-  return (
-    <>
-      <div id="navForm">
-        <img
-          src="src/assets/EnviroActions.png"
-          alt="EnviroAction Logo"
-          id="logo"
-          onClick={returnToLandingPage}
-        ></img>
-        <button onClick={returnhome}>Home</button>
-      </div>
+		const { name, value } = event.target;
 
-      <div>
-        <h1 id="formTitle">About You</h1>
-        <div className="scrollable-div">
-          <h3>Lifestyle</h3>
-          <p>How long do you commute everyday? (in minutes)</p>
-          <input
-            placeholder="Time"
-            type="number"
-            name="time"
-            onChange={inputsHandler}
-          ></input>
-          <p>What distance do you usually travel everyday? (in KM)</p>
-          <input
-            placeholder="Distance"
-            type="number"
-            name="distance"
-            onChange={inputsHandler}
-          ></input>
-          <p>With which vehicule do you usually travel?</p>
-          <label>
+		
+		setInputField((prevState) => ({
+			...prevState, 
+			[name]: value, 
+		}));
+	};
+
+    const Checkfinish = async () => {
+        const requestBody = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                commuteTime: inputField.time,
+                commuteDistance: inputField.distance,
+                commuteMethod: radio.vehicule,
+                shoppingStyle: radio.ShoppingStyle,
+                energyConsumption: inputField.energyConsomption,
+                houseSize: inputField.Housesize,
+                userLocation: radio.selectedOption,
+                Income: inputField.Income,
+                Expense: inputField.Expense,
+                Otherenergy: radio.Otherenergy,
+                lightonoff: radio.lightonoff,
+                AC_Heat: radio.AC_Heat, 
+                plugin: radio.plugin
+            }),
+        };
+        const response = await fetch("http://localhost:1339/report", requestBody);
+
+        const data = await response.json();
+        setUserData(data);
+        navigate("/report", { state: { userData: data } });
+    };
+
+    return (
+        <div>
+            <h1>About You</h1>
+            <h3>Lifestyle</h3>
+            
+
+            <p>How long do you commute everyday? (in minutes)</p>
             <input
               type="radio"
               value="Car"

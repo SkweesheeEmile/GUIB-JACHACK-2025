@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../styles/reportButton.css"; // Adjust the path as necessary
-
-export function ReportCenter() {
-  const navigate = useNavigate();
+export function ReportCenter(props: any) {
+    const navigate = useNavigate();
 
   const newReport = () => {
     navigate("/form");
