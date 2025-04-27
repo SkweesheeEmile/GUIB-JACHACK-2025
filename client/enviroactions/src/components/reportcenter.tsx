@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-function reportCenter(){
+export function ReportCenter(){
     const navigate = useNavigate();
 
     const newReport = () =>{
@@ -16,8 +16,4 @@ function reportCenter(){
         </div>
     );
 
-
-
-
 }
-export default reportCenter

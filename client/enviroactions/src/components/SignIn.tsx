@@ -1,8 +1,5 @@
 // src/components/SignIn.tsx
 import React from "react";
-import {Home} from "./Home";
-import { useState } from "react";
-import GetInfo from "./AccountInfo";
 import { useAuth0 } from "@auth0/auth0-react";
 
 export const SignIn: React.FC = () => {
@@ -23,7 +20,6 @@ export const SignIn: React.FC = () => {
 
   return (
     <div>
-      <h2>Sign In</h2>
       <button onClick={handleLogin}>Log In</button>
     </div>
   );

@@ -3,12 +3,14 @@ import { LogOut } from "./LogOut.tsx";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import { useNavigate } from "react-router-dom";
+import { ReportCenter } from "./reportcenter.tsx";
 
 function Home() {
   const navigate = useNavigate();
   const [selectedOption, setSelectedOption] = useState("");
   const [isOpenN, setIsOpenN] = useState(false);
   const [isOpenP, setIsOpenP] = useState(false);
+  const [reports, setreports] = useState([])
 
   const returnhome = () => {
     navigate("/");
@@ -18,10 +20,8 @@ function Home() {
     const value = e.target.value;
     setSelectedOption(value);
 
-
     if (value == "nomC") {
       openchangeN();
-
     }
     if (value == "passwordC") {
       openchangeP();
@@ -44,6 +44,7 @@ function Home() {
     //save new value
 
     setIsOpenN(false);
+    setSelectedOption("")
   };
   const openchangeP = () => {
     setIsOpenP(true);
@@ -51,6 +52,7 @@ function Home() {
   const closechangeP = () => {
     // save password
     setIsOpenP(false);
+    setSelectedOption("")
   };
 
   return (
@@ -65,20 +67,62 @@ function Home() {
         <option value="logout">Log Out</option>
       </select>
       {isOpenN && (
-        <div>
-          <h4>Choose your name</h4>
-          <input></input>
-          <button onClick={closechangrN}></button>
+        <div style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'red',
+              padding: '30px',
+              borderRadius: '10px',
+              boxShadow: '0px 5px 15px rgba(0,0,0,0.3)',
+              textAlign: 'center'
+            }}>
+                <h4>Choose your name</h4>
+                <input></input>
+                <button onClick={closechangrN}></button>
+            </div>
         </div>
       )}
       {isOpenP && (
-        <div>
-          <h4>Choose your password</h4>
-          <input></input>
-          <button onClick={closechangeP}></button>
+        <div style={{
+            position: 'fixed',
+            top: 0, left: 0, right: 0, bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 1000
+          }}>
+            <div style={{
+              backgroundColor: 'red',
+              padding: '30px',
+              borderRadius: '10px',
+              boxShadow: '0px 5px 15px rgba(0,0,0,0.3)',
+              textAlign: 'center'
+            }}>
+                <h4>Choose your password</h4>
+                <input></input>
+                <button onClick={closechangeP}>Save</button>
+            </div>
         </div>
       )}
-      <LogOut />
+        <LogOut />
+        <ul>
+            {reports.map(report =>(
+                <li key={report}>
+                    {report} 
+                </li>
+            ))}
+        </ul>
+
+        <ReportCenter />
+
     </div>
   );
 }

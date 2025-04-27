@@ -81,7 +81,6 @@ function Forms(props: any) {
     };
 
     return (
-
         <div>
             <h1>About You</h1>
             <h3>Lifestyle</h3>
