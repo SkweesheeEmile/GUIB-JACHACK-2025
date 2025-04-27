@@ -1,6 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Forms() {
+    
+        const navigate = useNavigate();
+    const [selectedOption, setSelectedOption] = useState('');
   const [selectedOption, setSelectedOption] = useState("");
 
   const [radio, setradio] = useState({
@@ -185,6 +189,13 @@ function Forms() {
       </label>
       <br />
       {radio.Otherenergy === "yes" && (
+
+       
+    const Checkfinish = () => {
+        navigate("/report");
+    };
+
+    return (
         <div>
           <p>What is this other type of energy?</p>
           <select onChange={handleChange} value={selectedOption}>
@@ -296,3 +307,4 @@ function Forms() {
   );
 }
 export default Forms;
+
