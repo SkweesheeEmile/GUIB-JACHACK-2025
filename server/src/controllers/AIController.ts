@@ -30,6 +30,13 @@ async function getReportHandler(req: Request, res: Response) {
 
         Location:
 
+        For the location, you can use the following example data to simulate the location of services around the user:
+        Do not add any other field to this object and try to make the coordinates as close to the actual location as possible.
+        Give a good title for the location.
+        { position: { lat: 45.5087, lng: -73.5540 }, title: 'Downtown Montreal' },
+        { position: { lat: 45.4857, lng: -73.5827 }, title: 'Old Montreal' },
+
+
         •	Location must be near the user
         •	If user input suggest certain actions that are not environmental friendly, suggest service location that help with that problem
         •	Filters in all locations that help the user on a personal level for example: eco center, eco friendly supermarket, and eco consultants etc.
