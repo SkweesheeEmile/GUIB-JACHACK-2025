@@ -14,7 +14,7 @@ export const SignUp: React.FC = () => {
         returnTo: `${window.location.origin}`,
       },
       authorizationParams: {
-        redirect_uri: `${window.location.origin}/infoForm`,
+        redirect_uri: `${window.location.origin}/form`,
       },
     });
   };

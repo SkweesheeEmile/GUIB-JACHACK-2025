@@ -1,0 +1,11 @@
+#navForm {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  width: 100vw;
+}
+
+#formTitle {
+  margin: 0;
+  font-size: 2.3em;
+}
