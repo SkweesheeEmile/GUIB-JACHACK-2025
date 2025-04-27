@@ -1,0 +1,7 @@
+#reportButtonContainer {
+  display: flex;
+  align-items: center;
+}
+#addButton {
+  background-color: #b6c38a;
+}
