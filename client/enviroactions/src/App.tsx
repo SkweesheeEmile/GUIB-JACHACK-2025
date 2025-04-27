@@ -1,10 +1,9 @@
 import "./App.css";
 import LandingPage from "./components/LandingPage.tsx";
 import { Route, Routes } from "react-router-dom";
-import Forms from "./components/Forms.tsx"
-import  AccountInfo  from './components/AccountInfo.tsx';
-import Home from './components/Home.tsx';
-import ReportPage from './components/ReportPage.tsx';
+import Forms from "./components/Forms.tsx";
+import Home from "./components/home.tsx";
+import ReportPage from "./components/ReportPage.tsx";
 
 
 function App() {
