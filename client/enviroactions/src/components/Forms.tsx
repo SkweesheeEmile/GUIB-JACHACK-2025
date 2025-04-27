@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-function forms(){
-
+function Forms(){
+    const navigate = useNavigate();
     const [selectedOption, setSelectedOption] = useState('');
 
     const [radio, setradio] = useState({
@@ -45,7 +45,7 @@ function forms(){
 	};
 
     const Checkfinish = () => {
-
+        navigate("/report");
     };
 
     return (
@@ -350,4 +350,4 @@ g
 
     );
 }
-export default forms
+export default Forms
