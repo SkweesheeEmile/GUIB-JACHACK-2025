@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 
-function forms(){
+function Forms(){
 
     const [selectedOption, setSelectedOption] = useState('');
 
@@ -350,4 +350,4 @@ g
 
     );
 }
-export default forms
+export default Forms
