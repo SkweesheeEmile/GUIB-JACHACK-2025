@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export function ReportCenter(){
+export function ReportCenter(props: any) {
     const navigate = useNavigate();
 
     const newReport = () =>{

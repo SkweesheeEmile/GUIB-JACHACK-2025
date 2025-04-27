@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 function Forms(props: any) {
     const navigate = useNavigate();
     const [address, setAddress] = useState('');
+    const [userData, setUserData] = useState('');
 
     const [radio, setradio] = useState({
         selectedOption: "",
@@ -76,7 +77,7 @@ function Forms(props: any) {
         const response = await fetch("http://localhost:1339/report", requestBody);
 
         const data = await response.json();
-        props.setUserData(data);
+        setUserData(data);
         navigate("/report", { state: { userData: data } });
     };
 
