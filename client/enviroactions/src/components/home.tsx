@@ -12,7 +12,6 @@ function Home() {
   const [isOpenN, setIsOpenN] = useState(false);
   const [isOpenP, setIsOpenP] = useState(false);
   const [reports, setreports] = useState([]);
-  const [reports, setreports] = useState([]);
 
   const { logout } = useAuth0();
   const returnLandingPage = () => {
@@ -52,7 +51,6 @@ function Home() {
 
     setIsOpenN(false);
     setSelectedOption("");
-    setSelectedOption("");
   };
   const openchangeP = () => {
     setIsOpenP(true);
@@ -60,7 +58,6 @@ function Home() {
   const closechangeP = () => {
     // save password
     setIsOpenP(false);
-    setSelectedOption("");
     setSelectedOption("");
   };
 
