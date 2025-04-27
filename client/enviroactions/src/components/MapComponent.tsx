@@ -7,7 +7,7 @@ const MapComponent = (props: { data: any }) => {
   const initialZoom = 12;
   const mapType: google.maps.MapTypeId = "roadmap" as google.maps.MapTypeId;
   const placesOfInterest: any = [];
-
+    console.log(props.data);
   props.data.Locations.forEach((location: any) => {
     console.log(location);
     const lat = location.position.lat;

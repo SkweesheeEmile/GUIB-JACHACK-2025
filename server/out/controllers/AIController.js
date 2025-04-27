@@ -31,6 +31,12 @@ async function getReportHandler(req, res) {
         •	All the location suggested must be display on the google maps
         •	must include all plausible location near user
         •	Provide as much location that is relevant in helping the user
+
+        provide the location in this format:
+            { position: { lat: 45.5087, lng: -73.5540 }, title: 'Downtown Montreal' },
+            { position: { lat: 45.4857, lng: -73.5827 }, title: 'Old Montreal' },
+
+      
         
         Investment:
 
