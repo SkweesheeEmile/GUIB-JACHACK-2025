@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import AddressAutocomplete from "./AddressSelect";
+import { useNavigate } from "react-router-dom";
 
 
-function forms(){
-
-    const [selectedOption, setSelectedOption] = useState('');
+function Forms(props: any) {
+    const navigate = useNavigate();
+    const [address, setAddress] = useState('');
 
     const [radio, setradio] = useState({
+        selectedOption: "",
         vehicule: "",
         ShoppingStyle: "",
         Otherenergy: "",
@@ -13,13 +16,15 @@ function forms(){
         AC_Heat: "", 
         plugin: ""
     });
+
     const [inputField, setInputField] = useState({
 		time: 0,
 		distance: 0,
         energyConsomption: 0,
         Housesize: 0,
         Income: 0,
-        Expense: 0
+        Expense: 0,
+        Address: ""
 	});
 
     const handleChange = (e: { target: { name: any; value: any; }; }) => {
@@ -30,6 +35,8 @@ function forms(){
 			...prevState, 
 			[name]: value, 
 		}));
+
+        console.log(`${name}: ${value}`);
     };
 
     const inputsHandler = (event: { preventDefault: () => void; target: { name: any; value: any; }; }) => {
@@ -44,36 +51,61 @@ function forms(){
 		}));
 	};
 
-    const Checkfinish = () => {
+    const Checkfinish = async () => {
+        const requestBody = {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                commuteTime: inputField.time,
+                commuteDistance: inputField.distance,
+                commuteMethod: radio.vehicule,
+                shoppingStyle: radio.ShoppingStyle,
+                energyConsumption: inputField.energyConsomption,
+                houseSize: inputField.Housesize,
+                userLocation: radio.selectedOption,
+                Income: inputField.Income,
+                Expense: inputField.Expense,
+                Otherenergy: radio.Otherenergy,
+                lightonoff: radio.lightonoff,
+                AC_Heat: radio.AC_Heat, 
+                plugin: radio.plugin
+            }),
+        };
+        const response = await fetch("http://localhost:1339/report", requestBody);
 
+        const data = await response.json();
+        props.setUserData(data);
+        navigate("/report", { state: { userData: data } });
     };
 
     return (
 
         <div>
-            <h1>Tell us a bit about your life</h1>
+            <h1>About You</h1>
             <h3>Lifestyle</h3>
             
 
-            <p>How long do you travel per day?</p>
+            <p>How long do you commute everyday? (in minutes)</p>
             <input
-                placeholder="time"
+                placeholder="Time"
 				type="number"
 				name="time"
 			    onChange={inputsHandler}
             ></input>
 
 
-            <p>What is the distance you usaly travel per day in Km?</p>
+            <p>What distance do you usually travel everyday? (in KM)</p>
             <input
-                placeholder="Km"
+                placeholder="Distance"
 				type="number"
 				name="distance"
 			    onChange={inputsHandler}
             ></input>
 
 
-            <p>With which vehicule do you usaly travel?</p>
+            <p>With which vehicule do you usually travel?</p>
             <label>
                 <input
                     type="radio"
@@ -107,7 +139,7 @@ function forms(){
                     checked={radio.vehicule === 'Marche'}
                     onChange={handleChange}
                 />
-                Marche
+                Walking
             </label>
 
             <br />
@@ -120,9 +152,8 @@ function forms(){
                     checked={radio.vehicule === 'Transport en commun'}
                     onChange={handleChange}
                 />
-                Transport en commun
+                Public Transport
             </label>
-
             <br />
 
 
@@ -162,12 +193,11 @@ function forms(){
                 />
                 Minimal
             </label>
-
-            <br />
+            <br/>
 
 
             <h3>Energy</h3>
-            <p>On average, how much energy does your house use in kW/h?</p>
+            <p>On average, how much energy does your house use? (in KW/h)</p>
             <input
                 placeholder="KW/h"
 				type="number"
@@ -176,7 +206,7 @@ function forms(){
             ></input>
 
 
-            <p>How big is your house in square feet</p>
+            <p>How big is your house? (In square feet)</p>
             <input
                 placeholder="sqr/f"
 				type="number"
@@ -185,12 +215,12 @@ function forms(){
             ></input>
 
 
-            <p>Where do you live?</p>
+            <p>What is your address?</p>
+
+            <AddressAutocomplete setAddress={setAddress} address={address}/>
 
 
-
-
-            <p>Do you use other source of energy other than the one provided by the city?</p>
+            <p>Do you use other energy source other than the one provided by the city?</p>
             <label>
                 <input
                     type="radio"
@@ -220,23 +250,22 @@ function forms(){
             {radio.Otherenergy === 'yes' && (
             <div>
                 <p>What is this other type of energy?</p>
-                <select onChange={handleChange} value={selectedOption}>
-                    <option value="">-- Choisir une option --</option>
-                    <option value="Caol">Coal</option>
-                    <option value="solar">Solar</option>
-                    <option value="fuel">Fuel</option>
+                <select name="selectedOption" onChange={handleChange} value={radio.selectedOption || ''}>
+                    <option value="">Choose an Option</option>
+                    <option value="Coal">Coal</option>
+                    <option value="Solar">Solar</option>
+                    <option value="Fuel">Fuel</option>
                     <option value="Gaz">Gaz</option>
                     <option value="Thermal">Thermal</option>
                     <option value="Hydroelectricity">Hydroelectricity</option>
                     <option value="Wind">WindPower</option>
-
                 </select>
             </div>
             )}
 
 
             <h3>Finance</h3>
-            <p>What is your income per year?</p>
+            <p>What is your yearly income?</p>
             <input
                 placeholder="$"
 				type="number"
@@ -245,7 +274,7 @@ function forms(){
             ></input>
             
 
-            <p>how much are your expense per mounth?</p>
+            <p>Approximatly, what are your monthly expenses?</p>
             <input
                 placeholder="$"
 				type="number"
@@ -255,7 +284,7 @@ function forms(){
 
 
             <h3>Awareness</h3>
-            <p>Do you make sure that there is only the lights needed open in your house?</p>
+            <p>Do you make sure all unused lights are close in your house ?</p>
             <label>
                 <input
                     type="radio"
@@ -283,7 +312,7 @@ function forms(){
             <br />
 
 
-            <p>Do you make sure to use as little as possible the AC and the heater of your house? </p>
+            <p>Do you overuse heating and AC?</p>
             <label>
                 <input
                     type="radio"
@@ -311,7 +340,7 @@ g
             <br />
 
 
-            <p>Do you leave your electronics always plug in?</p>
+            <p>Do you leave your electronics always plugged in?</p>
             <label>
                 <input
                     type="radio"
@@ -323,7 +352,7 @@ g
                 Yes
             </label>
 
-            <br />
+            <br/>
 
             <label>
                 <input
@@ -336,18 +365,11 @@ g
                 No
             </label>
 
-            <br />
-
-
+            <br/>
 
             <button onClick={Checkfinish}>Done</button>
         </div>
-
-
-
-
-
-
     );
 }
-export default forms
+
+export default Forms
